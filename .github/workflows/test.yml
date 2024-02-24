@@ -1,0 +1,30 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  build-kernel:
+    name: Build Kernel
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Build
+        uses: ayefuwa/kernel_build_action@main
+        with:
+          kernel-url: https://github.com/ahnet-69/kernel_sony_sm8250
+          branch: fourteen
+          config: pdx206_defconfig
+          arch: arm64
+          aosp-gcc: true
+          aosp-clang: true
+          ksu: true
+          ksu-version: main
+          android-version: 14
+          aosp-clang-version: r510928
+          python-27: true
+          disable-lto: true
+          overlayfs: true
+          lxc: false
+          lxc-patch: false
